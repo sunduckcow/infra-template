@@ -19,4 +19,10 @@ jobs:
        - run: echo "\n"
        - run: ls -la
        - run: pwd
+       - run: cd ..
+       - run: ls -la
+       - run: pwd
+       - run: cd ..
+       - run: ls -la
+       - run: pwd
       # - run: git log --pretty=format:'%h %an %s'   
