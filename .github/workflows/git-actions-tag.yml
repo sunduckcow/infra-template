@@ -8,17 +8,16 @@ jobs:
   new-tag-job:
     runs-on: ubuntu-latest
     steps:
-       - run: echo "Now im generating release message"
-       - run: echo "i think its a version tag:"
-       - run: echo ${{ steps.vars.outputs.tag }}
-       - run: echo "ответственный за релиз <имя того, кто запушил тег>"
-       - run: echo "коммиты, попавшие в релиз:"
-       - run: echo "<хеш коммита> <автор коммита> <описание коммита>"
-       - run: echo "<хеш коммита> <автор коммита> <описание коммита>"
-       - run: echo "<хеш коммита> <автор коммита> <описание коммита>"
-       - run: echo "\n"
-       - run: pwd
-       - run: ls -la
-       - run: ls -la ..
-       - run: ls -la ../..
-      # - run: git log --pretty=format:'%h %an %s'   
+      - uses: actions/checkout@v3
+      - run: echo "Now im generating release message"
+      - run: echo "i think its a version tag:"
+      - run: echo ${{ steps.vars.outputs.tag }}
+      - run: echo "ответственный за релиз <имя того, кто запушил тег>"
+      - run: echo "коммиты, попавшие в релиз:"
+      - run: echo "<хеш коммита> <автор коммита> <описание коммита>"
+      - run: echo "<хеш коммита> <автор коммита> <описание коммита>"
+      - run: echo "<хеш коммита> <автор коммита> <описание коммита>"
+      - run: echo "\n"
+      - run: pwd
+      - run: ls -la
+      #- run: git log --pretty=format:'%h %an %s'   
