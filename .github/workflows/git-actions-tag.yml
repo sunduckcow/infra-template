@@ -17,12 +17,8 @@ jobs:
        - run: echo "<хеш коммита> <автор коммита> <описание коммита>"
        - run: echo "<хеш коммита> <автор коммита> <описание коммита>"
        - run: echo "\n"
-       - run: ls -la
        - run: pwd
-       - run: cd ..
        - run: ls -la
-       - run: pwd
-       - run: cd ..
-       - run: ls -la
-       - run: pwd
+       - run: ls -la ..
+       - run: ls -la ../..
       # - run: git log --pretty=format:'%h %an %s'   
