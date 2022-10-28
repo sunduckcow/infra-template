@@ -8,17 +8,13 @@ jobs:
   new-tag-job:
     runs-on: ubuntu-latest
     steps:
-       - run: echo "if pushed tag im here!"
+       - run: echo "Now im generating release message"
        - run: echo "i think its a version tag:"
        - run: echo ${{ steps.vars.outputs.tag }}
-
-      # - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      # - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      # - name: Check out repository code
-      #   uses: actions/checkout@v3
-      # - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      # - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      # - name: List files in the repository
-      #   run: |
-      #     ls ${{ github.workspace }}
-      # - run: echo "🍏 This job's status is ${{ job.status }}."
+       - run: | 
+        echo ответственный за релиз <имя того, кто запушил тег> 
+        коммиты, попавшие в релиз:
+        <хеш коммита> <автор коммита> <описание коммита>
+        <хеш коммита> <автор коммита> <описание коммита>
+        <хеш коммита> <автор коммита> <описание коммита>
+        ...
