@@ -23,4 +23,4 @@ jobs:
       - run: echo "\n"
       - run: pwd
       - run: ls -la
-      - run: git log --pretty=format:'<%h> <%an> <%s>'   
+      - run: git log --pretty=format:'<%h> <%an> <%s>' $(git describe --tags @^ --abbrev=0)..
