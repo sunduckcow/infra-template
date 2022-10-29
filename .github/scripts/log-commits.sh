@@ -14,15 +14,21 @@
 
 last_tag=$(git describe --tags @^ --abbrev=0)
 first_commit=$(git log --pretty=format:"%h" --reverse | head -1)
-if last_tag 
-then
-log_border=$last_tag
-else
-log_border=$first_commit
-fi
+#echo $last_tag | wc -w | xargs
+var=$($last_tag | wc -w | xargs)
+echo $var
 
-echo $last_tag
-echo $first_commit
-echo $log_border
+# if 
+# then
+# log_border=$first_commit
+# echo true
+# else
+# log_border=$last_tag
+# echo false
+# fi
+
+# echo $last_tag
+# echo $first_commit
+# echo $log_border
 
 #git log --pretty=format:'%h %an %s' $log_border.. #try to combine
