@@ -19,9 +19,9 @@ jobs:
       - run: echo "\n"
       - run: pwd
       - run: ls -la
-      - run: echo "Ответственный за релиз $(git log --pretty=format:'%an'  @^..@)"
-      - run: echo "коммиты, попавшие в релиз:"
-      - run: git log --pretty=format:'<%h> <%an> <%s>' $(git describe --tags @^ --abbrev=0)..
+      #- run: echo "Ответственный за релиз $(git log --pretty=format:'%an'  @^..@)"
+      #- run: echo "коммиты, попавшие в релиз:"
+      #- run: git log --pretty=format:'<%h> <%an> <%s>' $(git describe --tags @^ --abbrev=0)..
       #- run: echo "Ответственный за релиз $(git log --pretty=format:'%an'  @^..@)\nкоммиты, попавшие в релиз:\n$(git log --pretty=format:'<%h> <%an> <%s>' $(git describe --tags @^ --abbrev=0)..)"
       - name: Output
         run: ./.github/scripts/log-commits.sh
