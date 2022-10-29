@@ -12,8 +12,17 @@
 #git log --pretty=format:'%h %an %s' $(git describe --tags @^ --abbrev=0).. #all commits scinse last tag
 #git log --pretty=format:'%h %an %s' $LAST.. #try to combine
 
+last_tag=$(git describe --tags @^ --abbrev=0)
+first_commit=$(git log --pretty=format:"%h" --reverse | head -1)
+if last_tag 
+then
+log_border=$last_tag
+else
+log_border=$first_commit
+fi
 
-LAST=$(git describe --tags @^ --abbrev=0 || git log --pretty=format:"%h" --reverse | head -1) 
-echo $LAST
+echo $last_tag
+echo $first_commit
+echo $log_border
 
-git log --pretty=format:'%h %an %s' $LAST.. #try to combine
+#git log --pretty=format:'%h %an %s' $log_border.. #try to combine
