@@ -17,11 +17,12 @@ jobs:
       - run: echo "i think its a version tag:"
       - run: echo ${{ steps.vars.outputs.tag }}
       - run: echo "ответственный за релиз <имя того, кто запушил тег>"
-      - run: echo "коммиты, попавшие в релиз:"
+      
       - run: echo "<хеш коммита> <автор коммита> <описание коммита>"
       - run: echo "<хеш коммита> <автор коммита> <описание коммита>"
       - run: echo "\n"
       - run: pwd
       - run: ls -la
       - run: echo "Ответственный за релиз $(git log --pretty=format:'%an'  @^..@)"
+      - run: echo "коммиты, попавшие в релиз:"
       - run: git log --pretty=format:'<%h> <%an> <%s>' $(git describe --tags @^ --abbrev=0)..
