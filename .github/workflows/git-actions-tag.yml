@@ -25,7 +25,7 @@ jobs:
       - name: Send release message
         run: |
               message=$(./.github/scripts/log-commits.sh)
-              ./.github/scripts/send-message.sh message
+              ./.github/scripts/send-message.sh $message
         env:
           OAuth: ${{ secrets.OAUTH_TOKEN }}
           orgId: ${{ secrets.ORGANIZATION_ID }}
