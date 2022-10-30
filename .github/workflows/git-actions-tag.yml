@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   push:
     tags:
-      - 'rc-*.*.*'
+      - 'rc-1.0.*'
 jobs:
   new-tag-job:
     runs-on: ubuntu-latest
@@ -33,10 +33,10 @@ jobs:
         env:
           OAuth: ${{ secrets.OAUTH_TOKEN }}
           orgId: ${{ secrets.ORGANIZATION_ID }}
-      - name: Generating docker image
-        run:
-        env:
-          OAuth: ${{ secrets.OAUTH_TOKEN }}
-          orgId: ${{ secrets.ORGANIZATION_ID }}
+      # - name: Generating docker image
+      #   run:
+      #   env:
+      #     OAuth: ${{ secrets.OAUTH_TOKEN }}
+      #     orgId: ${{ secrets.ORGANIZATION_ID }}
 
                 
