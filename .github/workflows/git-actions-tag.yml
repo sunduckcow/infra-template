@@ -25,9 +25,9 @@ jobs:
       - name: Send release message to tracker
         run: |
               message=$(./.github/scripts/log-commits.sh)
-              echo "release message successfully genereted"
+              echo "release message successfully genereted ($message)"
               body=$(./.github/scripts/generate-body.sh description "$message")
-              echo "body successfully genereted"
+              echo "body successfully genereted ($body)"
               ./.github/scripts/send-message.sh PATCH "$body"
               echo "release message loaded to tracker"
         env:
@@ -36,6 +36,7 @@ jobs:
       - name: Generating docker image
         run: |
               body=$(body=$(./.github/scripts/generate-body.sh text "test comment"))
+              echo "body successfully genereted ($body)"
               ./.github/scripts/send-message.sh POST "$body" comments
         env:
           OAuth: ${{ secrets.OAUTH_TOKEN }}
