@@ -1,6 +1,7 @@
 #!/bin/bash
 
 message=$1
+echo $message
 
 body='{"description": "'"$message"'"}'
 

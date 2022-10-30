@@ -24,6 +24,7 @@ jobs:
         run: npm run lint
       - name: Generate release message
         run: message=$(./.github/scripts/log-commits.sh)
+      - run: echo $message
       - name: Send tracker message
         run: ./.github/scripts/send-message.sh $message
         env:
