@@ -35,9 +35,12 @@ jobs:
           orgId: ${{ secrets.ORGANIZATION_ID }}
       - name: Generating docker image
         run: |
-              body=$(./.github/scripts/generate-body.sh text "test comment")
+              message="Собрал образ с тэгом ${{ github.ref_name }}"
+              echo "comment message successfully genereted ($message)"
+              body=$(./.github/scripts/generate-body.sh text "$message")
               echo "body successfully genereted ($body)"
               ./.github/scripts/send-message.sh POST "$body" comments
+              echo "comment loaded to tracker"
         env:
           OAuth: ${{ secrets.OAUTH_TOKEN }}
           orgId: ${{ secrets.ORGANIZATION_ID }}
