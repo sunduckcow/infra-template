@@ -1,9 +1,11 @@
 #!/bin/bash
 
-body=$1
+#$1 - method, $2 - body, $3 - link ending
+
+body=$2
 
 ticket="HOMEWORKSHRI-173"
-link="https://api.tracker.yandex.net/v2/issues/$ticket/$2"
+link="https://api.tracker.yandex.net/v2/issues/$ticket/$3"
 
 curl \
 -w "%{http_code}" \
@@ -11,4 +13,4 @@ curl \
 -H "Content-Type: application/json"  \
 -H "Authorization: OAuth ${OAuth}" \
 -H "X-Org-ID: ${orgId}" \
--X PATCH $link
+-X $1 $link

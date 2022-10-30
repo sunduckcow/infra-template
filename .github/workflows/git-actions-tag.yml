@@ -13,22 +13,22 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "16.16.0"
-      - name: 'install'
-        run: npm ci
-      - name: 'test'
-        run: npm run test
-      - name: 'lint'
-        run: npm run lint
+      # - uses: actions/setup-node@v2
+      #   with:
+      #     node-version: "16.16.0"
+      # - name: 'install'
+      #   run: npm ci
+      # - name: 'test'
+      #   run: npm run test
+      # - name: 'lint'
+      #   run: npm run lint
       - name: Send release message to tracker
         run: |
               message=$(./.github/scripts/log-commits.sh)
               echo "release message successfully genereted"
               body=$(./.github/scripts/generate-body.sh description "$message")
               echo "body successfully genereted"
-              ./.github/scripts/send-message.sh "$body"
+              ./.github/scripts/send-message.sh PATCH "$body"
               echo "release message loaded to tracker"
         env:
           OAuth: ${{ secrets.OAUTH_TOKEN }}
@@ -36,7 +36,7 @@ jobs:
       - name: Generating docker image
         run: |
               body=$(body=$(./.github/scripts/generate-body.sh text "test comment"))
-              ./.github/scripts/send-message.sh "$body" comments
+              ./.github/scripts/send-message.sh POST "$body" comments
         env:
           OAuth: ${{ secrets.OAUTH_TOKEN }}
           orgId: ${{ secrets.ORGANIZATION_ID }}
