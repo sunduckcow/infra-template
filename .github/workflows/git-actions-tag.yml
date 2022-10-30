@@ -20,8 +20,13 @@ jobs:
         run: npm ci
       - name: 'test'
         run: npm run test
-      - name: 'test'
+      - name: 'lint'
         run: npm run lint
-      - name: Release message
-        run: ./.github/scripts/log-commits.sh
+      - name: Generate release message
+        run: message=$(./.github/scripts/log-commits.sh)
+      - name: Send tracker message
+        run: ./.github/scripts/send-message.sh message
+        env:
+          OAuth: ${{ secrets.OAUTH_TOKEN }}
+          orgId: ${{ secrets.ORGANIZATION_ID }}
                 
