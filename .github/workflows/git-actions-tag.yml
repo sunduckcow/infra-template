@@ -35,6 +35,8 @@ jobs:
           orgId: ${{ secrets.ORGANIZATION_ID }}
       - name: Generating docker image
         run: |
+              docker build -f Dockerfile -t ${{ github.ref_name }}
+              echo "bulded docker image"
               message="Собрал образ с тэгом ${{ github.ref_name }}"
               echo "comment message successfully genereted ($message)"
               body=$(./.github/scripts/generate-body.sh text "$message")
