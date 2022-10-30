@@ -11,7 +11,7 @@ nTags=`git tag | wc -w | xargs`
 if [ $nTags -gt "1" ] # nTags > 1
 then
 last_tag=`git describe --tags @^ --abbrev=0` #get last tag name before current
-git log --pretty=format:'%h %an %s' $last_tag.. #log all commits after prew tag
+git log --pretty=format:'%h %an %s\n' $last_tag.. | tr -s '\n' ' ' #log all commits after prew tag
 else
 git log --pretty=format:'%h %an %s' #just log all commits
 fi
