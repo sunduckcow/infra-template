@@ -22,13 +22,12 @@ jobs:
         run: npm run test
       - name: 'lint'
         run: npm run lint
-      - run: ./.github/scripts/log-commits.sh
-      - name: Generate release message
-        run: export message=$(./.github/scripts/log-commits.sh)
-      - run: echo $message
-      - name: Send tracker message
-        run: ./.github/scripts/send-message.sh $message
+      - name: Send release message
+        run: |
+              message=$(./.github/scripts/log-commits.sh)
+              ./.github/scripts/send-message.sh message
         env:
           OAuth: ${{ secrets.OAUTH_TOKEN }}
           orgId: ${{ secrets.ORGANIZATION_ID }}
+
                 
