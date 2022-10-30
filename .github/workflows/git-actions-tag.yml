@@ -26,7 +26,7 @@ jobs:
         run: |
               message=$(./.github/scripts/log-commits.sh)
               echo "release message successfully genereted ($message)"
-              body=$(./.github/scripts/generate-body.sh description "$message")
+              body=$(./.github/scripts/generate-body.sh summary "Релиз ${{ github.ref_name }} $(date +%F)" description "$message")
               echo "body successfully genereted ($body)"
               ./.github/scripts/send-message.sh PATCH "$body"
               echo "release message loaded to tracker"
