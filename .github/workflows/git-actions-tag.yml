@@ -28,7 +28,7 @@ jobs:
               echo "release message successfully genereted"
               body=$(./.github/scripts/generate-body.sh description $message)
               echo "body successfully genereted"
-              ./.github/scripts/send-message.sh $body
+              ./.github/scripts/send-message.sh "$body"
               echo "release message loaded to tracker"
         env:
           OAuth: ${{ secrets.OAUTH_TOKEN }}
