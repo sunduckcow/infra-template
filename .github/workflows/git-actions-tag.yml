@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   push:
     tags:
-      - 'rc-*.*.*'
+      - 'rc-1.0.*'
 jobs:
   new-tag-job:
     runs-on: ubuntu-latest
@@ -22,10 +22,19 @@ jobs:
         run: npm run test
       - name: 'lint'
         run: npm run lint
-      - name: Send release message
+      - name: Send release message to tracker
         run: |
               message=$(./.github/scripts/log-commits.sh)
-              ./.github/scripts/send-message.sh "$message"
+              echo "release message successfully genereted"
+              body=$(./.github/scripts/generate-body.sh description $message)
+              echo "body successfully genereted"
+              ./.github/scripts/send-message.sh $body
+              echo "release message loaded to tracker"
+        env:
+          OAuth: ${{ secrets.OAUTH_TOKEN }}
+          orgId: ${{ secrets.ORGANIZATION_ID }}
+      - name: Generating docker image
+        run:
         env:
           OAuth: ${{ secrets.OAUTH_TOKEN }}
           orgId: ${{ secrets.ORGANIZATION_ID }}
