@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   push:
     tags:
-      - 'rc-1.0.*'
+      - 'rc-*.*.*'
 jobs:
   new-tag-job:
     runs-on: ubuntu-latest
