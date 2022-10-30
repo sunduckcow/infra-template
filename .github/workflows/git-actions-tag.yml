@@ -13,17 +13,14 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
-      - run: echo "Now im generating release message"
-      - run: echo "i think its a version tag:"
-      - run: echo ${{ steps.vars.outputs.tag }}
-      - run: echo "\n"
-      - run: pwd
-      - run: ls -la
-      #- run: echo "Ответственный за релиз $(git log --pretty=format:'%an'  @^..@)"
-      #- run: echo "коммиты, попавшие в релиз:"
-      #- run: git log --pretty=format:'<%h> <%an> <%s>' $(git describe --tags @^ --abbrev=0)..
-      #- run: echo "Ответственный за релиз $(git log --pretty=format:'%an'  @^..@)\nкоммиты, попавшие в релиз:\n$(git log --pretty=format:'<%h> <%an> <%s>' $(git describe --tags @^ --abbrev=0)..)"
-      - name: Output
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16.16.0"
+      - name: 'install'
+        run: |
+              npm ci
+              npm run test
+              npm run lint
+      - name: Release message
         run: ./.github/scripts/log-commits.sh
-                #chmod +x ./.github/scripts/log-commits.sh
                 
