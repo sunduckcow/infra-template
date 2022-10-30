@@ -33,10 +33,12 @@ jobs:
         env:
           OAuth: ${{ secrets.OAUTH_TOKEN }}
           orgId: ${{ secrets.ORGANIZATION_ID }}
-      # - name: Generating docker image
-      #   run:
-      #   env:
-      #     OAuth: ${{ secrets.OAUTH_TOKEN }}
-      #     orgId: ${{ secrets.ORGANIZATION_ID }}
+      - name: Generating docker image
+        run: |
+              body=$(body=$(./.github/scripts/generate-body.sh text "test comment"))
+              ./.github/scripts/send-message.sh "$body" comments
+        env:
+          OAuth: ${{ secrets.OAUTH_TOKEN }}
+          orgId: ${{ secrets.ORGANIZATION_ID }}
 
                 
