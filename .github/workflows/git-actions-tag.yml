@@ -20,6 +20,8 @@ jobs:
         run: npm ci
       - name: 'test'
         run: npm run test
+      - name: 'types test'
+        run: npm run ts
       - name: 'lint'
         run: npm run lint
       - name: Send release message to tracker
